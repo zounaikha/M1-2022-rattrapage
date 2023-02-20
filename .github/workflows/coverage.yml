@@ -1,0 +1,39 @@
+name: Couverture de test pour PRs
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  coverage-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
+
+      - name: Generate Coverage Report
+        run: npm run coverage:report
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: coverage/lcov-report
+
+      - name: Comment on PR
+        uses: unsplash/comment-on-pr@v1
+        with:
+          message: '## Coverage Report\n![Coverage Report](https://zounaikha.github.io/M1-2022-rattrapage/coverage-report)\n'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
