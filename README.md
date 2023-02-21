@@ -6,4 +6,5 @@
 4.Merge de la branche :  git merge add_tests dev --no-ff  
 5.creation du workflow du test (coverage.yml)  
 6.creation du worflow build (test_build.yml)  
+7.test des workflow en creant des tags
 7.pull request
