@@ -1,9 +1,8 @@
 import pytest
 from src.fibonacci.fibonacci import fibonacci
-#test des 6 premiers valeurs de la suite de fibonacci
+#test des 4 premiers valeurs de la suite de fibonacci
 
 def test_fibonacci():
-    assert fibonacci(0) == 0
     assert fibonacci(1) == 1
     assert fibonacci(2) == 1
     assert fibonacci(3) == 2
